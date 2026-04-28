@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MaJo Massoterapia PG | Bem-estar e Relaxamento</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --rose: #d48b9c;
+            --rose-dark: #b86b7e;
+            --gold: #c9a96e;
+            --gold-light: #e0d0b0;
+            --cream: #fdf7f2;
+            --white: #ffffff;
+            --dark: #3e2f33;
+            --gray: #6b5e62;
+            --light-gray: #f0eae7;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 15px 40px rgba(0, 0, 0, 0.13);
+            --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Segoe UI', 'Poppins', system-ui, -apple-system, sans-serif;
+            background-color: var(--cream);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* PULSING ANIMATIONS */
+        @keyframes pulse-whatsapp {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+            70% { box-shadow: 0 0 0 14px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        @keyframes pulse-maps {
+            0% { box-shadow: 0 0 0 0 rgba(212, 139, 156, 0.65); }
+            70% { box-shadow: 0 0 0 14px rgba(212, 139, 156, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 139, 156, 0); }
+        }
+        @keyframes pulse-whatsapp-nav {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* HEADER & NAV */
+        header {
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+        .header-top {
+            background: var(--rose);
+            color: var(--white);
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .header-top i { margin-right: 5px; color: var(--gold-light); }
+        .header-top span { display: inline-flex; align-items: center; gap: 4px; }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 25px;
+            flex-wrap: wrap;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--rose-dark);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .logo i { font-size: 2.2rem; color: var(--gold); }
+        .logo span { color: var(--dark); font-weight: 300; }
+
+        .nav-links { display: flex; gap: 30px; list-style: none; flex-wrap: wrap; }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 6px 0;
+            transition: var(--transition);
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0; height: 2px;
+            bottom: 0; left: 0;
+            background: var(--rose);
+            transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--rose-dark); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .btn-whatsapp-nav {
+            background: #25D366;
+            color: white !important;
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            animation: pulse-whatsapp-nav 2s infinite;
+            transition: var(--transition);
+        }
+        .btn-whatsapp-nav:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+        .hero {
+            background: linear-gradient(135deg, #fdf2f5 0%, #fce4ec 40%, #f8e3e9 100%);
+            padding: 70px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(212, 139, 156, 0.2) 0%, transparent 70%);
+            top: -50px; right: -50px;
+            border-radius: 50%;
+        }
+        .hero-content { max-width: 800px; position: relative; z-index: 2; }
+        .hero h1 { font-size: 3rem; font-weight: 700; margin-bottom: 15px; line-height: 1.2; }
+        .slogan-destaque {
+            color: #c44569;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 8px rgba(196, 69, 105, 0.2);
+            font-weight: 800;
+        }
+        .hero p { font-size: 1.2rem; color: var(--gray); margin-bottom: 30px; }
+        .badge-container { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 25px; }
+        .badge {
+            background: var(--white);
+            padding: 12px 20px;
+            border-radius: 40px;
+            box-shadow: var(--shadow);
+            font-weight: 600;
+            color: var(--rose-dark);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+        .badge i { font-size: 1.1rem; color: var(--gold); }
+
+        /* SEÇÕES GERAIS */
+        section { padding: 70px 25px; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 60px; height: 3px;
+            background: var(--rose);
+            bottom: -12px; left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        .section-title p { color: var(--gray); margin-top: 18px; font-size: 1.05rem; }
+
+        /* SOBRE - AJUSTADO PARA MAIOR VISIBILIDADE */
+        #sobre { background: var(--white); }
+        .sobre-grid {
+            display: flex;
+            align-items: center;
+            gap: 60px;  /* maior separação entre texto e imagens */
+            flex-wrap: wrap;
+        }
+        .sobre-texto {
+            flex: 1 1 45%;  /* ocupa quase metade */
+            min-width: 300px;
+            padding-right: 10px;
+        }
+        .sobre-texto h3 {
+            font-size: 2rem;
+            color: var(--rose-dark);
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+        .sobre-texto p {
+            color: #4a3b3f;  /* tom mais escuro para melhor leitura */
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+        .sobre-texto p strong {
+            color: var(--rose-dark);
+            font-weight: 600;
+        }
+        .sobre-destaques {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        .sobre-destaque-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--light-gray);
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-weight: 600;
+            color: #2c2326;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+        }
+        .sobre-destaque-item i {
+            font-size: 1.3rem;
+            color: var(--rose);
+        }
+
+        /* FOTOS - proporções equilibradas */
+        .sobre-fotos {
+            flex: 1 1 45%;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .sobre-imagem {
+            width: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+        .sobre-fotos .sobre-imagem:first-child {
+            height: 260px;  /* ligeiramente maior */
+        }
+        .sobre-fotos .sobre-imagem:last-child {
+            height: 200px;
+        }
+        .sobre-imagem img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .sobre-imagem:hover img { transform: scale(1.03); }
+        .sobre-imagem-overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(to top, rgba(62,47,51,0.75) 0%, transparent 100%);
+            padding: 15px 20px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+        }
+        .sobre-imagem-overlay i { color: var(--gold-light); }
+
+        /* SERVIÇOS etc. permanecem iguais */
+        #servicos { background: var(--cream); }
+        .servicos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .servico-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .servico-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-hover); }
+        .servico-card i { font-size: 2.5rem; color: var(--rose); margin-bottom: 18px; }
+        .servico-card h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--dark); }
+        .servico-card p { color: var(--gray); font-size: 0.9rem; }
+
+        #experiencias { background: var(--white); }
+        .exp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 25px; }
+        .exp-card { text-align: center; padding: 25px 15px; }
+        .exp-card .icon-circle {
+            width: 75px; height: 75px;
+            background: var(--rose);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 18px;
+            font-size: 2rem; color: white;
+            transition: var(--transition);
+        }
+        .exp-card:hover .icon-circle { background: var(--rose-dark); transform: scale(1.08); }
+        .exp-card h4 { font-size: 1.2rem; margin-bottom: 8px; color: var(--dark); }
+        .exp-card p { color: var(--gray); font-size: 0.9rem; }
+
+        #depoimentos { background: var(--white); }
+        .depoimentos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+        .depoimento-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        .depoimento-card:hover { box-shadow: var(--shadow-hover); }
+        .depoimento-card .stars { color: #f4b400; margin-bottom: 12px; font-size: 1rem; }
+        .depoimento-card p { font-style: italic; color: var(--dark); margin-bottom: 15px; }
+        .depoimento-card .cliente-nome { font-weight: 700; color: var(--rose-dark); }
+
+        footer { background: var(--dark); color: #e0d7da; padding: 50px 25px 25px; }
+        .footer-container {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 35px;
+        }
+        .footer-col h3 {
+            color: var(--white); margin-bottom: 18px; font-size: 1.2rem;
+            border-bottom: 2px solid var(--rose); display: inline-block; padding-bottom: 5px;
+        }
+        .footer-col p, .footer-col a {
+            color: #cfc3c7; text-decoration: none; display: block;
+            margin-bottom: 12px; transition: var(--transition);
+        }
+        .footer-col a:hover { color: var(--rose); }
+        .footer-col i { margin-right: 8px; color: var(--gold); width: 18px; text-align: center; }
+
+        .footer-btn-whatsapp {
+            background: #25D366;
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-top: 5px;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: pulse-whatsapp 2s infinite;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+        }
+        .footer-btn-whatsapp:hover { background: #1da851; transform: translateY(-2px); }
+
+        .footer-btn-maps {
+            background: var(--rose);
+            color: white !important;
+            padding: 12px 20px;
+            border-radius: 30px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 700;
+            margin-top: 5px;
+            transition: var(--transition);
+            text-decoration: none;
+            animation: pulse-maps 2s infinite;
+            font-size: 1rem;
+        }
+        .footer-btn-maps:hover { background: var(--rose-dark); transform: translateY(-2px); }
+
+        .footer-bottom {
+            text-align: center; margin-top: 35px; padding-top: 20px;
+            border-top: 1px solid #5a4e52; font-size: 0.85rem; color: #aaa;
+        }
+
+        .btn-agende {
+            display: inline-block;
+            background: #25D366;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            animation: pulse-whatsapp 2s infinite;
+        }
+        .btn-agende:hover { background: #1da851; transform: translateY(-3px); }
+
+        @media (max-width: 768px) {
+            .nav-container { flex-direction: column; gap: 15px; }
+            .nav-links { gap: 15px; justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
+            .sobre-grid { flex-direction: column; }
+            .sobre-fotos .sobre-imagem:first-child { height: 220px; }
+            .sobre-fotos .sobre-imagem:last-child { height: 180px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top">
+            <span><i class="fas fa-clock"></i> Aberto 24 horas</span>
+            <span><i class="fas fa-parking"></i> Estacionamento grátis</span>
+            <span><i class="fas fa-map-marker-alt"></i> R. Abatia, 192 - Nova Rússia</span>
+        </div>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-spa"></i> MaJo<span>Massoterapia PG</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#sobre">Sobre</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#experiencias">Experiências</a></li>
+                <li><a href="#depoimentos">Depoimentos</a></li>
+            </ul>
+            <a href="https://wa.me/5551981671916?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20massagem%20no%20MaJo%20Massoterapia%20PG!" target="_blank" class="btn-whatsapp-nav">
+                <i class="fab fa-whatsapp"></i> Agendar
+            </a>
+        </div>
+    </header>
+
+    <!-- SOBRE (agora mais visível e organizado) -->
+    <section id="sobre">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <p>Conheça a essência da MaJo Massoterapia PG</p>
+            </div>
+            <div class="sobre-grid">
+                <div class="sobre-texto">
+                    <h3>MaJo Massoterapia PG</h3>
+                    <p>Sou massoterapeuta dedicada a promover bem-estar, alívio de tensões e qualidade de vida. Atendo na Rua Abatia, 192, no bairro Nova Rússia, em um ambiente acolhedor e profissional, utilizando técnicas terapêuticas e relaxantes.</p>
+                    <p>Meu grande diferencial? <strong>Atendimento 24 horas</strong>. Sei que o estresse e as dores não têm hora para aparecer, por isso estou disponível de portas abertas a qualquer momento, inclusive madrugadas e feriados.</p>
+                    <div class="sobre-destaques">
+                        <div class="sobre-destaque-item"><i class="fas fa-check-circle"></i> Massoterapeuta certificada</div>
+                        <div class="sobre-destaque-item"><i class="fas fa-check-circle"></i> Técnicas personalizadas</div>
+                        <div class="sobre-destaque-item"><i class="fas fa-check-circle"></i> Ambiente tranquilo</div>
+                        <div class="sobre-destaque-item"><i class="fas fa-gem"></i> Óleos e cremes premium</div>
+                    </div>
+                </div>
+                <div class="sobre-fotos">
+                    <div class="sobre-imagem">
+                        <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=600&auto=format&fit=crop" alt="Massoterapeuta em atendimento">
+                        <div class="sobre-imagem-overlay">
+                            <i class="fas fa-heart"></i> Sua terapeuta
+                        </div>
+                    </div>
+                    <div class="sobre-imagem">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=600&auto=format&fit=crop" alt="Ambiente de massagem relaxante">
+                        <div class="sobre-imagem-overlay">
+                            <i class="fas fa-spa"></i> Nosso espaço
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><span class="slogan-destaque">RELAXAMENTO QUE NÃO DORME</span></h1>
+            <p>Massagem terapêutica e relaxante 24 horas por dia. Alívio do estresse, dores e tensões com hora marcada – ou na hora que você precisar.</p>
+            <a href="https://wa.me/5551981671916?text=Ol%C3%A1%2C%20quero%20agendar%20uma%20massagem%20no%20MaJo%20Massoterapia%20PG!" target="_blank" class="btn-agende">
+                <i class="fab fa-whatsapp"></i> Agende pelo WhatsApp
+            </a>
+            <div class="badge-container">
+                <div class="badge"><i class="fas fa-moon"></i> Atendimento 24h</div>
+                <div class="badge"><i class="fas fa-car"></i> Estacionamento Grátis</div>
+                <div class="badge"><i class="fas fa-star"></i> Atendimento premium</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS, EXPERIÊNCIAS, DEPOIMENTOS permanecem iguais -->
+    <section id="servicos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossos Serviços</h2>
+                <p>Técnicas de massagem para o seu bem-estar</p>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <i class="fas fa-cloud"></i>
+                    <h3>Massagem Relaxante</h3>
+                    <p>Movimentos suaves e envolventes para aliviar o estresse e restaurar a calma.</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <h3>Massagem Terapêutica</h3>
+                    <p>Manobras profundas para liberar tensões musculares e aliviar dores crônicas.</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-fire"></i>
+                    <h3>Pedras Quentes</h3>
+                    <p>Calor terapêutico com pedras vulcânicas que relaxam profundamente e estimulam a circulação.</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-water"></i>
+                    <h3>Drenagem Linfática</h3>
+                    <p>Técnica suave que auxilia na redução de edemas e promove detoxificação.</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>Massagem Modeladora</h3>
+                    <p>Massagem vigorosa com foco na redução de medidas e melhora do contorno corporal.</p>
+                </div>
+                <div class="servico-card">
+                    <i class="fas fa-running"></i>
+                    <h3>Massagem Desportiva</h3>
+                    <p>Preparação e recuperação muscular para atletas ou praticantes de atividades físicas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experiencias">
+        <div class="container">
+            <div class="section-title">
+                <h2>Experiências que fazem a diferença</h2>
+                <p>Detalhes especiais para uma sessão inesquecível</p>
+            </div>
+            <div class="exp-grid">
+                <div class="exp-card">
+                    <div class="icon-circle"><i class="fas fa-mug-hot"></i></div>
+                    <h4>Bebidas cortesia</h4>
+                    <p>Chá calmante, água aromatizada ou café especial ao final da sessão.</p>
+                </div>
+                <div class="exp-card">
+                    <div class="icon-circle"><i class="fas fa-music"></i></div>
+                    <h4>Ambiente sensorial</h4>
+                    <p>Música suave, iluminação indireta e aromaterapia para uma experiência completa.</p>
+                </div>
+                <div class="exp-card">
+                    <div class="icon-circle"><i class="fas fa-wifi"></i></div>
+                    <h4>Wi-Fi liberado</h4>
+                    <p>Fique à vontade para ouvir sua própria playlist ou até mesmo trabalhar antes da massagem.</p>
+                </div>
+                <div class="exp-card">
+                    <div class="icon-circle"><i class="fas fa-gift"></i></div>
+                    <h4>Programa de fidelidade</h4>
+                    <p>A cada 5 sessões, ganhe uma massagem relaxante de 30 minutos como presente.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="depoimentos">
+        <div class="container">
+            <div class="section-title">
+                <h2>O Que Nossas Clientes Dizem</h2>
+                <p>Relatos de quem já experimentou o toque MaJo Massoterapia</p>
+            </div>
+            <div class="depoimentos-grid">
+                <div class="depoimento-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"Incrível! Consegui agendar uma massagem às 23h depois de um dia estressante. Saí de lá completamente renovada, ambiente maravilhoso."</p>
+                    <span class="cliente-nome">— Camila D.</span>
+                </div>
+                <div class="depoimento-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p>"A massagem terapêutica resolveu minhas dores nas costas em poucas sessões. Profissional muito atenciosa e técnica impecável."</p>
+                    <span class="cliente-nome">— Juliana S.</span>
+                </div>
+                <div class="depoimento-card">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p>"Estacionamento grátis e atendimento 24h fazem toda a diferença. Voltei tarde de uma viagem e mesmo assim fui atendida com todo cuidado."</p>
+                    <span class="cliente-nome">— Rafaela M.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>MaJo Massoterapia PG</h3>
+                <p><i class="fas fa-map-marker-alt"></i> R. Abatia, 192 - Nova Rússia</p>
+                <p><i class="fas fa-clock"></i> 24 horas, todos os dias</p>
+                <p><i class="fas fa-parking"></i> Estacionamento grátis</p>
+                <a href="https://wa.me/5551981671916?text=Ol%C3%A1%2C%20desejo%20agendar%20uma%20massagem!" target="_blank" class="footer-btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> (51) 98167-1916
+                </a>
+            </div>
+            <div class="footer-col">
+                <h3>Links Rápidos</h3>
+                <a href="#sobre">Sobre</a>
+                <a href="#servicos">Serviços</a>
+                <a href="#experiencias">Experiências</a>
+                <a href="#depoimentos">Depoimentos</a>
+            </div>
+            <div class="footer-col">
+                <h3>Como Chegar</h3>
+                <a href="https://www.google.com/maps/search/?api=1&query=R.+Abatia,+192+-+Nova+Rússia,+Ponta+Grossa+-+PR" target="_blank" class="footer-btn-maps" style="margin-bottom:12px;">
+                    <i class="fas fa-route"></i> Traçar rota no Google Maps
+                </a>
+                <p style="margin-top:12px;">Bairro Nova Rússia, Ponta Grossa - PR</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 MaJo Massoterapia PG | Atendimento 24h. Todos os direitos reservados.
+        </div>
+    </footer>
+
+</body>
+</html>
